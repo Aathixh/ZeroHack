@@ -23,7 +23,7 @@ const ChatScreen = () => {
   const [error, setError] = useState<string | null>(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
 
-  const API_KEY = "AIzaSyANgk6lRgFUv2Ywpu0rWCEv_k3PEDM1GQo";
+  const API_KEY = "############################";
 
   const handleUserInput = async () => {
     //Add user input to chat
