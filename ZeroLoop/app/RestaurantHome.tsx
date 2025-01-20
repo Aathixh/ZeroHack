@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import * as React from "react";
+import { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -23,7 +24,11 @@ const RestaurantHome = () => {
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Restaurant</Text>
-        <Image style={styles.logo} />
+        <Image
+          style={styles.logo}
+          source={require("../assets/images/star.png")}
+        />
+        <Text style={{ color: "#ffffff", left: 60, bottom: 15 }}>4.2</Text>
       </View>
 
       <TouchableOpacity
@@ -60,8 +65,12 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins500Med",
   },
   logo: {
-    width: 40,
-    height: 40,
+    width: 25,
+    height: 25,
+    color: "#ffffff",
+    position: "absolute",
+    right: 45,
+    bottom: 40,
   },
   sectionTitle1: {
     fontSize: 20,

@@ -13,9 +13,16 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useIsFocused } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 
-type RootStackParamList = {};
+type RootStackParamList = {
+  chat: undefined;
+  food: undefined;
+  scrape: undefined;
+  donate: undefined;
+};
 
-const HomeScreen = () => {
+type Props = NativeStackScreenProps<RootStackParamList>;
+
+const HomeScreen = ({ navigation }: Props) => {
   const [loaded] = useFonts({
     Poppins500Med: require("../assets/fonts/Poppins500Med.ttf"),
   });
@@ -23,7 +30,11 @@ const HomeScreen = () => {
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>ZeroLoop</Text>
-        <Image style={styles.logo} />
+        <Image
+          style={styles.logo}
+          source={require("../assets/images/coin.png")}
+        />
+        <Text style={{ color: "#ffffff", left: 90, bottom: 10 }}>500</Text>
       </View>
       <Text style={styles.sectionTitle2}>Quick Services</Text>
       <View style={styles.quickServices}>
@@ -59,7 +70,9 @@ const HomeScreen = () => {
 
       <TouchableOpacity
         style={[styles.card2, { marginVertical: 1 }]}
-        onPress={() => {}}
+        onPress={() => {
+          navigation.navigate("food");
+        }}
       >
         <Text style={styles.cardText2}>FOOD</Text>
         <Text style={styles.cardText3}>
@@ -69,7 +82,9 @@ const HomeScreen = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.card2, { marginVertical: 1 }]}
-        onPress={() => {}}
+        onPress={() => {
+          navigation.navigate("scrape");
+        }}
       >
         <Text style={styles.cardText2}>GET RID OF{"\n"}SCRAPE</Text>
         <Text style={styles.cardText3}>
@@ -79,7 +94,9 @@ const HomeScreen = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.card2, { marginVertical: 1 }]}
-        onPress={() => {}}
+        onPress={() => {
+          navigation.navigate("donate");
+        }}
       >
         <Text style={styles.cardText2}>DONATE</Text>
         <Text style={styles.cardText3}>
@@ -89,7 +106,9 @@ const HomeScreen = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.card2, { marginVertical: 1 }]}
-        onPress={() => {}}
+        onPress={() => {
+          navigation.navigate("chat");
+        }}
       >
         <Text style={styles.cardText2}>CHAT WITH AI</Text>
         <Text style={styles.cardText3}>
@@ -121,8 +140,12 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins500Med",
   },
   logo: {
-    width: 40,
-    height: 40,
+    width: 20,
+    height: 20,
+    color: "#ffffff",
+    position: "absolute",
+    right: 50,
+    bottom: 35,
   },
   sectionTitle1: {
     fontSize: 20,
